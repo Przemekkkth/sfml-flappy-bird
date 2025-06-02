@@ -41,3 +41,9 @@ add_executable(flappybird
 
 target_compile_features(flappybird PRIVATE cxx_std_17)
 target_link_libraries(flappybird PRIVATE SFML::Graphics SFML::Audio)
+
+add_custom_command(TARGET flappybird POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_SOURCE_DIR}/assets
+    ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/assets
+)
