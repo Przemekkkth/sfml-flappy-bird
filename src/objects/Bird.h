@@ -21,8 +21,8 @@ public:
     void SetGravity(float newGravity);
     const float m_x = GLOBALS::WINDOW_WIDTH / 3.0f;
     float m_y = GLOBALS::WINDOW_HEIGHT / 2.0f;
-    const uint WIDTH = 34;
-    const uint HEIGHT = 24;
+    const unsigned int WIDTH = 34;
+    const unsigned int HEIGHT = 24;
 private:
     void Push();
     void CheckYBoundary();

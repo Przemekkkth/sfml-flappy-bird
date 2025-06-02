@@ -75,7 +75,7 @@ void World::Update(const sf::Time time)
     if (fLevelPosition > fSectionWidth) {
         fLevelPosition -= fSectionWidth;
         listSections.pop_front();
-        uint pipeY = random() % (GLOBALS::WINDOW_HEIGHT - (20 * GLOBALS::UNIT_SIZE));
+        unsigned int pipeY = rand() % (GLOBALS::WINDOW_HEIGHT - (20 * GLOBALS::UNIT_SIZE));
         if (pipeY < 10*GLOBALS::UNIT_SIZE) {
             pipeY = 0;
         }
@@ -120,7 +120,7 @@ void World::drawBackground(sf::RenderWindow &window)
 
 void World::drawBase(sf::RenderWindow &window)
 {
-    const uint baseHeight = m_baseSprite->getTexture().getSize().y;
+    const unsigned int baseHeight = m_baseSprite->getTexture().getSize().y;
     m_baseSprite->setPosition(sf::Vector2f(0.0f, GLOBALS::WINDOW_HEIGHT - baseHeight));
     window.draw(*m_baseSprite);
 }
@@ -146,7 +146,7 @@ void World::drawSections(sf::RenderWindow &window)
                 m_scoreSFX->play();
                 nScore++;
                 if ((nScore%5) == 0) {
-                    uint pipeY = random() % (GLOBALS::WINDOW_HEIGHT - (20 * GLOBALS::UNIT_SIZE));
+                    unsigned int pipeY = rand() % (GLOBALS::WINDOW_HEIGHT - (20 * GLOBALS::UNIT_SIZE));
                     if (pipeY < 10*GLOBALS::UNIT_SIZE) {
                         pipeY = 0;
                     }
