@@ -26,7 +26,9 @@ void StateManager::Update(const sf::Time &time)
         return;
     }
 
-    auto& topState = m_states.back().second;
+    auto topItr = m_states.end();
+    --topItr;
+    auto& topState = topItr->second;
 
     if (topState->IsTranscendent() && m_states.size() > 1)
     {
@@ -58,7 +60,9 @@ void StateManager::Draw()
         return;
     }
 
-    auto& topState = m_states.back().second;
+    auto topItr = m_states.end();
+    --topItr;
+    auto& topState = topItr->second;
 
     if (topState->IsTransparent() && m_states.size() > 1)
     {
@@ -116,7 +120,9 @@ bool StateManager::HasState(const StateType type)
 
 void StateManager::SwitchTo(const StateType type)
 {
-    auto& topState = m_states.back().second;
+    auto topItr = m_states.end();
+    --topItr;
+    auto& topState = topItr->second;
 
     for (auto state = m_states.begin(); state != m_states.end(); ++state)
     {
@@ -139,7 +145,10 @@ void StateManager::SwitchTo(const StateType type)
         topState->Deactivate();
     }
     CreateState(type);
-    m_states.back().second->Activate();
+
+    topItr = m_states.end();
+    --topItr;
+    topItr->second->Activate();
 }
 
 void StateManager::Remove(const StateType type)
@@ -149,7 +158,9 @@ void StateManager::Remove(const StateType type)
 
 void StateManager::HandlePlayerInput(const std::optional<sf::Event> &event)
 {
-    auto& topState = m_states.back().second;
+    auto topItr = m_states.end();
+    --topItr;
+    auto& topState = topItr->second;
     topState->HandlePlayerInput(event);
 }
 
