@@ -12,7 +12,7 @@ FetchContent_Declare(SFML
     SYSTEM)
 FetchContent_MakeAvailable(SFML)
 
-add_executable(main
+add_executable(flappybird
     src/Game.cpp
     src/Game.h
     src/Globals.h
@@ -39,5 +39,5 @@ add_executable(main
     src/states/GameOverState.h src/states/GameOverState.cpp
 )
 
-target_compile_features(main PRIVATE cxx_std_17)
-target_link_libraries(main PRIVATE SFML::Graphics SFML::Audio)
+target_compile_features(flappybird PRIVATE cxx_std_17)
+target_link_libraries(flappybird PRIVATE SFML::Graphics SFML::Audio)
